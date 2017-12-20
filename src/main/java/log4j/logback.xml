@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--MDC多线程-->
 <configuration>
     <jmxConfigurator/>
 
+    <property name="log.path" value="/home/cdh/log/dataEngineLog/dataEngine" />
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -18,7 +20,7 @@
         <sift>
             <!-- A standard RollingFileAppender, the log file is based on 'logFileName' at runtime  -->
             <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-                <file>logs/${logFileName}.log</file>
+                <file>${log.path}/${logFileName}.log</file>
                 <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
                     <Pattern>
                         %d{yyyy-MM-dd HH:mm:ss.SSS} %mdc [%thread] %-5level %logger{36} - %msg%n
@@ -36,9 +38,9 @@
                     <!--日志文件保留天数-->
                     <MaxHistory>30</MaxHistory>
                 </rollingPolicy>
-                <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-                    <MaxFileSize>100MB</MaxFileSize>
-                </triggeringPolicy>
+                <!--<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+                    <!--<MaxFileSize>100MB</MaxFileSize>-->
+                <!--</triggeringPolicy>-->
             </appender>
         </sift>
     </appender>

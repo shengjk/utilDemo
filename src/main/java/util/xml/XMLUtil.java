@@ -1,8 +1,6 @@
 package util.xml;
 
 
-import scala.tools.nsc.plugins.Plugins;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -108,12 +106,5 @@ public class XMLUtil {
 			e.printStackTrace();
 		}
 		return xmlObject;
-	}
-	
-	
-	public static void main(String[] args) {
-//		Topics topics = (Topics) convertXmlFileToObject(Topics.class, "/Users/iss/sourceCode/gitProject/iss/data_exchange1/dataexchange/src/main/resources/instance-topic.xml");
-		Plugins plugins=(Plugins)convertXmlFileToObject(Plugins.class,"/Users/iss/sourceCode/gitProject/iss/data_exchange1/dataexchange/src/main/resources/instance-plugin.xml");
-		System.out.println();
 	}
 }

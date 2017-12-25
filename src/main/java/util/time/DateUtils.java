@@ -270,9 +270,9 @@ public class DateUtils {
 		Date dat = new Date(milliseconds);
 		gc.setTime(dat);
 		//24小时
-//        java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		//12小时
-		java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//		java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String sb = format.format(gc.getTime());
 		return sb;
 	}
@@ -295,6 +295,6 @@ public class DateUtils {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(millisecondsToDataStr(1511773736000L));
+		System.out.println(millisecondsToDataStr(1513847139000L));
 	}
 }

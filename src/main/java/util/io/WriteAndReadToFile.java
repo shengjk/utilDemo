@@ -28,7 +28,9 @@ public class WriteAndReadToFile {
 			br = new BufferedReader(isr);
 			String line="";
 			while ((line=br.readLine())!=null) {
-				list.add(line);
+				if (line.contains("\\\"status\\\":\\\"60\\\"")){
+					list.add(line+"\n");
+				}
 			}
 		}  catch (Exception e) {
 			logger.error("文件读取失败 {}",e);
@@ -111,13 +113,6 @@ public class WriteAndReadToFile {
 	
 	
 	public static void main(String[] args) throws Exception {
-		ArrayList<String> list=new ArrayList<>();
-		list.add("a\n");
-		list.add("a\n");
-		list.add("a\n");
-		list.add("a\n");
-		list.add("a");
-		list.clear();
-		outPutList("./",list,"test.txt",false);
+		outPutList("/Users/iss/Desktop",readFile("/Users/iss/Desktop/update.txt"),"update1.txt",true);
 	}
 }

@@ -270,7 +270,7 @@ public class DateUtils {
 		Date dat = new Date(milliseconds);
 		gc.setTime(dat);
 		//24小时
-        java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
 		//12小时
 //		java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		String sb = format.format(gc.getTime());
@@ -285,16 +285,19 @@ public class DateUtils {
 	 * @return
 	 */
 	public static long DataStrTomilliseconds(String dateTime) throws ParseException {
-		
-		Calendar c = Calendar.getInstance();
-		
-		c.setTime(new SimpleDateFormat("yyyy-MM-dd").parse(dateTime));
-		
-		return c.getTimeInMillis();
-		
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").parse(dateTime).getTime();
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(millisecondsToDataStr(1513847139000L));
+		System.out.println(millisecondsToDataStr(1509518423110L));
+		try {
+			System.out.println(DataStrTomilliseconds("2018-01-02 00:00:00:000"));
+			/**1509518424110  1min相差1000
+			 * 1509518429110
+			 * 1509518423000
+			 */
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <!-- ZK服务器域名 -->
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>192.168.2.27,192.168.2.26,192.168.2.28</value>
+  </property>
+  
+  <!-- ZK服务端口 -->
+  <property>
+    <name>hbase.zookeeper.property.clientPort</name>
+     <value>2181</value>
+  </property>
+  
+	<!-- 写缓存默认2M，改为6M，提升批量写性能 -->
+  <property>
+    <name>hbase.client.write.buffer</name>
+     <value>6291456</value>
+  </property>
+  
+  <!-- scan读缓存默认1，根据业务情况进行修改，提升读性能，比如：一次查询100条，则可配置100，不可太高，最好别上千 -->
+  <property>
+    <name>hbase.client.scanner.caching</name>
+    <value>500</value>
+  </property>
+
+</configuration>

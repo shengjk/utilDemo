@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
  */  
 public class ScheduledExecutorServiceTest implements Runnable {
   
-    public static ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(2);    
+    public static ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
   
-    public static void main(String[] args){  
+    public static void main(String[] args){
         System.out.println("start:" + new Date());  
         
         int delay = 1000;

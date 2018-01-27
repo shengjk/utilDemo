@@ -54,19 +54,21 @@ public class SendEmailUtils {
 	   prop.put("mail.smtp.starttls.enable", "true");
 	   prop.put("mail.smtp.ssl.socketFactory", sf);
 	   //
-	   Session session = Session.getDefaultInstance(prop, new MyAuthenricator("wujunsheng@sigmatrix.cn", "Junsheng.wu123"));
+	   Session session = Session.getDefaultInstance(prop, new MyAuthenricator("junsheng.wu@ishansong.com", "muuLfPHjpAyaoWGs"));
 //        session.setDebug(true);
 	   MimeMessage mimeMessage = new MimeMessage(session);
 	   try {
-		   mimeMessage.setFrom(new InternetAddress("wujunsheng@sigmatrix.cn",""));
-		   mimeMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("wujunsheng@sigmatrix.cn"));
-		   mimeMessage.setSubject(title);
+		   mimeMessage.setFrom(new InternetAddress("junsheng.wu@ishansong.com",""));
+		   Address[] addresses={new InternetAddress("junsheng.wu@ishansong.com"),new InternetAddress("haoran.wang@ishansong.com"),new InternetAddress("gang.zhang@ishansong.com")};
+		   
+		   mimeMessage.addRecipients(Message.RecipientType.TO, addresses);
+		   mimeMessage.setSubject("[重要] spark程序异常-"+title);
 		   mimeMessage.setSentDate(new Date());
-		   mimeMessage.setText(context);
+		   mimeMessage.setText("系统时间戳"+System.currentTimeMillis()+ "\n"+context);
 		   mimeMessage.saveChanges();
 		   Transport.send(mimeMessage);
 	   } catch (Exception e) {
-		   logger.error("scan 邮件异常 " +e);
+		   logger.error("邮件发送异常 " +e);
 		   
 	   }
    }

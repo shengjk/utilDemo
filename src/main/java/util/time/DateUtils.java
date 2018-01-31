@@ -12,7 +12,8 @@ import java.util.GregorianCalendar;
 /**
  * 日期时间工具类
  *
- * @author huisx
+ *
+ import org.apache.commons.lang3.time.FastDateFormat; 线程安全
  */
 public class DateUtils {
 	

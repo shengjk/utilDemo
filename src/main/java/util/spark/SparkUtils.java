@@ -1,4 +1,4 @@
-package util;
+package util.spark;
 
 
 
@@ -6,6 +6,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
 import org.apache.spark.sql.SQLContext;
 import org.apache.spark.sql.hive.HiveContext;
+import util.Constants;
 import util.config.ConfigurationManager;
 
 /**

@@ -12,27 +12,27 @@ import java.io.FileReader;
 public class XMLParser {
 	
 //
-	/**
-	 *
-	 * @return
-	 * @throws Exception
-	 */
-	public static List<Plugin> getPluginList() throws Exception {
-		Plugins plugins=convertXmlFileToObject(Plugins.class, ConfigManager.build().getProperty("pluginXml"));
-		return plugins.getPlugin();
-	}
-
-
-	/**
-	 *
-	 * @return
-	 * @throws Exception
-	 */
-	public static List<Topic> getTopicList() throws Exception {
-		Topics topics=convertXmlFileToObject(Topics.class,ConfigManager.build().getProperty("topicXml"));
-		return topics.getTopic();
-	}
+//	/**
+//	 *
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	public static List<Plugin> getPluginList() throws Exception {
+//		Plugins plugins=convertXmlFileToObject(Plugins.class, ConfigManager.build().getProperty("pluginXml"));
+//		return plugins.getPlugin();
+//	}
 //
+//
+//	/**
+//	 *
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	public static List<Topic> getTopicList() throws Exception {
+//		Topics topics=convertXmlFileToObject(Topics.class,ConfigManager.build().getProperty("topicXml"));
+//		return topics.getTopic();
+//	}
+////
 	
 	/**
 	 *

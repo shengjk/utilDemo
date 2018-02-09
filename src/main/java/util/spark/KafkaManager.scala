@@ -71,8 +71,7 @@ class KafkaManager(val kafkaParams: Map[String, String]) extends Serializable {
 		for(i<- 0 until tpArray.length){
 			topics+=tpArray(i).topic
 		}
-		
-		
+
 		setOrUpdateOffsets(topics.toSet, groupId)
 		//从zookeeper上读取offset开始消费message
 		val messages = {
@@ -80,11 +79,61 @@ class KafkaManager(val kafkaParams: Map[String, String]) extends Serializable {
 			if (consumerOffsetsE.isLeft)
 				throw new SparkException(s"get kafka consumer offsets failed: ${consumerOffsetsE.left.get}")
 			val consumerOffsets = consumerOffsetsE.right.get
+			val offsets: Map[TopicAndPartition, Long] = consumerOffsets
 			KafkaUtils.createDirectStream[K, V, KD, VD, (K, V)](
 				ssc, kafkaParams, consumerOffsets, (mmd: MessageAndMetadata[K, V]) => (mmd.key, mmd.message))
 		}
 		messages
 	}
+
+	/**
+	  * 构建Map
+	  * @param list string:topicName Int:分区号 Long:指定偏移量
+	  * @return
+	  */
+	def setFromOffsets(list: List[(String, Int, Long)]): Map[TopicAndPartition, Long] = {
+		var fromOffsets: Map[TopicAndPartition, Long] = Map()
+		for (offset <- list) {
+			val tp = TopicAndPartition(offset._1, offset._2)//topic和分区数
+			fromOffsets += (tp -> offset._3)           // offset位置
+		}
+		fromOffsets
+	}
+
+	/**
+	  * 从指定offset消费kafka
+	  * @param ssc
+	  * @param kafkaParams
+	  * @param list
+	  * @tparam K
+	  * @tparam V
+	  * @tparam KD
+	  * @tparam VD
+	  * @return
+	  */
+	def createDirectStreamByAssignPartitionAndOffset[K: ClassTag, V: ClassTag, KD <: Decoder[K] : ClassTag, VD <: Decoder[V] : ClassTag](
+													ssc: StreamingContext, kafkaParams: Map[String, String],list: List[(String, Int, Long)]): InputDStream[(K, V)] = {
+
+		val fromOffsets: Map[TopicAndPartition, Long] = setFromOffsets(list)
+
+		val groupId = kafkaParams.get("group.id").get
+		// 在zookeeper上读取offsets前先根据实际情况更新offsets
+		val topics=ArrayBuffer[String]()
+		val topicPartition = fromOffsets.keys.toSet
+		val tpArray=topicPartition.toArray
+		for(i<- 0 until tpArray.length){
+			topics+=tpArray(i).topic
+		}
+
+		setOrUpdateOffsets(topics.toSet, groupId)
+		//从kafka上指定位置的offset开始消费message
+		val messages = {
+			KafkaUtils.createDirectStream[K, V, KD, VD, (K, V)](
+				ssc, kafkaParams, fromOffsets, (mmd: MessageAndMetadata[K, V]) => (mmd.key, mmd.message))
+		}
+		messages
+	}
+
 	
 	
 	

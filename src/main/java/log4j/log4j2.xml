@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j2能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
+<!--其实status属性是帮助开发者找错用的，它可以检测log4j 2的配置文件是否有错，也可以检测到死循环的logger-->
+<!--默认是5s-->
+<configuration status="WARN" monitorInterval="30">
+    <!--先定义所有的appender-->
+    <!--<Appenders>元素，官方文档表示有还有一种异步appender，但是效能提升及其有限，而且在多线程情况下有可能出现问题，所以不建议使用-->
+    <appenders>
+        <!--这个输出控制台的配置-->
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+        </console>
+        <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
+        <File name="log" fileName="log/test.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+
+
+        <!-- 这个会打印出所有的info及以下级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档-->
+        <!--建议使用RollingRandomAccessFile 因为这种类型的fileAppender有缓存功能，效率比RollingFile高-->
+        <RollingRandomAccessFile name="RollingFileInfo" fileName="logs/info.log"
+                                 filePattern="logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.zip">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <!--SizeBasedTriggeringPolicy 设置日志大小达到一定大小后打包生成压缩文件。
+TimeBasedTriggeringPolicy 基于时间的触发策略。该策略主要是完成周期性的log文件封存工作。有两个参数：
+interval，integer型，指定两次封存动作之间的时间间隔。单位:以日志的命名精度来确定单位，比如yyyy-MM-dd-HH 单位为小时，yyyy-MM-dd-HH-mm 单位为分钟。
+modulate，boolean型，说明是否对封存时间进行调制。若modulate=true，则封存时间将以0点为边界进行偏移计算。比如，modulate=true，interval=4hours，那么假设上次封存日志的时间为03:00，则下次封存日志的时间为04:00，之后的封存时间依次为08:00，12:00，16:00。-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+
+        <!--<RollingFile name="RollingFileWarn" fileName="logs/warn.log"-->
+        <!--filePattern="logs/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">-->
+        <!--<ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>-->
+        <!--<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>-->
+        <!--<Policies>-->
+        <!--<TimeBasedTriggeringPolicy/>-->
+        <!--<SizeBasedTriggeringPolicy size="100 MB"/>-->
+        <!--</Policies>-->
+        <!--&lt;!&ndash; DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 &ndash;&gt;-->
+        <!--<DefaultRolloverStrategy max="20"/>-->
+        <!--</RollingFile>-->
+        <!--<RollingFile name="RollingFileError" fileName="logs/error.log"-->
+        <!--filePattern="logs/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log">-->
+        <!--<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>-->
+        <!--<PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>-->
+        <!--<Policies>-->
+        <!--<TimeBasedTriggeringPolicy/>-->
+        <!--<SizeBasedTriggeringPolicy size="100 MB"/>-->
+        <!--</Policies>-->
+        <!--</RollingFile>-->
+
+        <!--&lt;!&ndash;SMTPAppender默认情况下只发送ERROR级别以上的日志，在测试的时候会发现低级别的日志是不会通过邮箱发送的。&ndash;&gt;-->
+        <!--<SMTP name="Mail" subject="****SaaS系统正式版异常信息" to="yong.shi@lengjing.info"-->
+        <!--from="message@lengjing.info" smtpUsername="message@lengjing.info"-->
+        <!--smtpPassword="LENG****1234" smtpHost="mail.lengjing.info" smtpDebug="false"-->
+        <!--smtpPort="25" bufferSize="10">-->
+        <!--<PatternLayout pattern="[%-5p]:%d{YYYY-MM-dd HH:mm:ss} [%t] %c{1}:%L - %msg%n"/>-->
+        <!--</SMTP>-->
+
+    </appenders>
+
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--logger中的name是指代码的包名或类名，路径要写全，可以配置不同包中的日志输出到不同的文件中
+        additivity设置事件是否在root logger输出，为了避免重复输出，可以在Logger 标签下设置additivity为”false”
+        过滤掉spring和mybatis的一些无用的DEBUG信息-->
+        <logger name="org.springframework" level="INFO" additivity="true"></logger>
+
+        <logger name="org.mybatis" level="INFO"></logger>
+        <root level="all">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
+            <appender-ref ref="RollingFileError"/>
+        </root>
+    </loggers>
+
+
+
+    <!--&lt;!&ndash; 定义logger们 &ndash;&gt;-->
+    <!--<Loggers>-->
+    <!--&lt;!&ndash; 定义根logger，根logger是必须的，这里我把根logger定义为异步的，也可为定义为普通的同步的，但是注意在同步根logger和异步根logger中只能存在一个，不能两个都配置 &ndash;&gt;-->
+    <!--<asyncRoot level="info">-->
+    <!--<AppenderRef ref="consoleAppender" />-->
+    <!--</asyncRoot>-->
+    <!--&lt;!&ndash; 普通的根logger，注意，跟上面的异步跟root同时只能存在一个 &ndash;&gt;-->
+    <!--&lt;!&ndash; <Root level="trace"> <AppenderRef ref="consoleAppender" /> </Root> &ndash;&gt;-->
+    <!--&lt;!&ndash; 定义一个普通的logger，这里我定义为异步的 &ndash;&gt;-->
+    <!--<asyncLogger name="com.foo.Bar" level="info" additivity="false">-->
+    <!--<AppenderRef ref="consoleAppender" />-->
+    <!--<AppenderRef ref="rollingRandomAccessFileAppender" />-->
+    <!--</asyncLogger>-->
+    <!--&lt;!&ndash; 定义一个普通的logger &ndash;&gt;-->
+    <!--<Logger name="com.foo.Bar.common" level="info" additivity="false">-->
+    <!--<AppenderRef ref="consoleAppender" />-->
+    <!--<AppenderRef ref="rollingRandomAccessFileAppender" />-->
+    <!--</Logger>-->
+    <!--</Loggers>-->
+
+    <!--<Loggers>-->
+    <!--<logger name="com.srd.ljzd" level="INFO" additivity="true">-->
+    <!--<appender-ref ref="INFO" />-->
+    <!--<appender-ref ref="WARN" />-->
+    <!--<appender-ref ref="ERROR" />-->
+    <!--<appender-ref ref="Mail" />-->
+    <!--</logger>-->
+    <!--<root level="DEBUG">-->
+    <!--<appender-ref ref="Console"/>-->
+    <!--</root>-->
+    <!--</Loggers>-->
+
+
+</configuration>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF" monitorInterval="30">
+    <properties>
+        <!--设置日志在硬盘上输出的目录-->
+        <property name="logPath">D:/ljzx_log</property>
+    </properties>
+
+    <Appenders>
+        <!--设置在控制台打印日志-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5p]:%d{YYYY-MM-dd HH:mm:ss} [%t] %c{1}:%L - %msg%n" />
+        </Console>
+
+        <!--设置级别为INFO日志输出到info.log中-->
+        <RollingFile name="INFO" filename="${logPath}/info.log"
+                     filepattern="${logPath}/%d{YYYYMMdd}-%i-info.log.zip">
+            <Filters>
+                <!--设置只输出级别为INFO的日志-->
+                <ThresholdFilter level="INFO"/>
+                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="[ %-5p]:%d{YYYY-MM-dd HH:mm:ss} [%t] %c{1}:%L - %msg%n" />
+            <Policies>
+                <!--设置每天打包日志一次-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!--设置日志文件满1MB后打包-->
+                <SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <!--设置级别为WARN日志输出到warn.log中-->
+        <RollingFile name="WARN" filename="${logPath}/warn.log"
+                     filepattern="${logPath}/%d{YYYYMMdd}-%i-warn.log.zip">
+            <Filters>
+                <!--设置只输出级别为WARN的日志-->
+                <ThresholdFilter level="WARN"/>
+                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <PatternLayout pattern="[ %-5p]:%d{YYYY-MM-dd HH:mm:ss} [%t] %c{1}:%L - %msg%n" />
+            <Policies>
+                <!--设置每天打包日志一次-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!--设置日志文件满1MB后打包-->
+                <SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <!--设置级别为ERROR日志输出到error.log中-->
+        <RollingFile name="ERROR" filename="${logPath}/error.log"
+                     filepattern="${logPath}/%d{YYYYMMdd}-%i-error.log.zip">
+            <!--设置只输出级别为ERROR的日志-->
+            <ThresholdFilter level="ERROR"/>
+            <PatternLayout pattern="[ %-5p]:%d{YYYY-MM-dd HH:mm:ss} [%t] %c{1}:%L - %msg%n" />
+            <Policies>
+                <!--设置每天打包日志一次-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <!--设置日志文件满1MB后打包-->
+                <SizeBasedTriggeringPolicy size="1 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+
+        <!--设置通过邮件发送日志信息-->
+        <SMTP name="Mail" subject="XXXXSaaS系统正式版异常信息" to="yong.shi@lengjing.info" from="message@lengjing.info"
+              smtpUsername="message@lengjing.info" smtpPassword="LENG****1234" smtpHost="mail.lengjing.info" smtpDebug="false"
+              smtpPort="25" bufferSize="10">
+            <PatternLayout pattern="[%-5p]:%d{YYYY-MM-dd HH:mm:ss} [%t] %c{1}:%L - %msg%n" />
+        </SMTP>
+    </Appenders>
+
+    <Loggers>
+        <logger name="com.srd.ljzd" level="INFO" additivity="true">
+            <appender-ref ref="INFO" />
+            <appender-ref ref="WARN" />
+            <appender-ref ref="ERROR" />
+            <appender-ref ref="Mail" />
+        </logger>
+        <root level="DEBUG">
+            <appender-ref ref="Console"/>
+        </root>
+    </Loggers>
+</Configuration>

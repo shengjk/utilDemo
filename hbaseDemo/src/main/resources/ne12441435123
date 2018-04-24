@@ -1,0 +1,139 @@
+<script language="JavaScript" src="viewctrl.js"></script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>个人信用报告</TITLE>
+<STYLE type=text/css></STYLE>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<link rel="stylesheet" href="css/style1.css" type="text/css">
+<style type="text/css">
+  .tdStyle{
+          border:1px solid;
+          }
+</style>
+<style type="text/css">
+<!--
+.style1 {
+        color: #0066cc;
+        font-weight: bold;
+}
+.style4 {color: #0066cc; font-size: 14px; }
+TD {
+        FONT-FAMILY: 宋体; FONT-SIZE: 9pt
+}
+-->
+</style>
+
+<script language="JavaScript"><!--
+   //屏蔽鼠标右键、Ctrl+N、Shift+F10、F11、F5刷新、退格键
+function  document.oncontextmenu(){event.returnValue=false;}//屏蔽鼠标右键
+function  window.onhelp(){return  false}  //屏蔽F1帮助
+function  document.onkeydown()
+{
+   if  ((window.event.altKey)&&
+           ((window.event.keyCode==37)  ||      //屏蔽  Alt+  方向键  ←
+             (window.event.keyCode==39)))      //屏蔽  Alt+  方向键  →
+   {
+         alert("不准你使用ALT+方向键前进或后退网页！");
+         event.returnValue=false;
+   }
+         /*  注：这还不是真正地屏蔽  Alt+  方向键，
+         因为  Alt+  方向键弹出警告框时，按住  Alt  键不放，
+         用鼠标点掉警告框，这种屏蔽方法就失效了。以后若
+         有哪位高手有真正屏蔽  Alt  键的方法，请告知。*/
+
+   if  ((event.keyCode==8)      ||                                  //屏蔽退格删除键
+   
+   <script language="JavaScript" src="viewctrl.js"></script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>个人信用报告</TITLE>
+<STYLE type=text/css></STYLE>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<link rel="stylesheet" href="css/style1.css" type="text/css">
+<style type="text/css">
+  .tdStyle{
+          border:1px solid;
+          }
+</style>
+<style type="text/css">
+<!--
+.style1 {
+        color: #0066cc;
+        font-weight: bold;
+}
+.style4 {color: #0066cc; font-size: 14px; }
+TD {
+        FONT-FAMILY: 宋体; FONT-SIZE: 9pt
+}
+-->
+</style>
+
+<script language="JavaScript"><!--
+   //屏蔽鼠标右键、Ctrl+N、Shift+F10、F11、F5刷新、退格键
+function  document.oncontextmenu(){event.returnValue=false;}//屏蔽鼠标右键
+function  window.onhelp(){return  false}  //屏蔽F1帮助
+function  document.onkeydown()
+{
+   if  ((window.event.altKey)&&
+           ((window.event.keyCode==37)  ||      //屏蔽  Alt+  方向键  ←
+             (window.event.keyCode==39)))      //屏蔽  Alt+  方向键  →
+   {
+         alert("不准你使用ALT+方向键前进或后退网页！");
+         event.returnValue=false;
+   }
+         /*  注：这还不是真正地屏蔽  Alt+  方向键，
+         因为  Alt+  方向键弹出警告框时，按住  Alt  键不放，
+         用鼠标点掉警告框，这种屏蔽方法就失效了。以后若
+         有哪位高手有真正屏蔽  Alt  键的方法，请告知。*/
+
+   if  ((event.keyCode==8)      ||                                  //屏蔽退格删除键
+   <script language="JavaScript" src="viewctrl.js"></script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>个人信用报告</TITLE>
+<STYLE type=text/css></STYLE>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<link rel="stylesheet" href="css/style1.css" type="text/css">
+<style type="text/css">
+  .tdStyle{
+          border:1px solid;
+          }
+</style>
+<style type="text/css">
+<!--
+.style1 {
+        color: #0066cc;
+        font-weight: bold;
+}
+.style4 {color: #0066cc; font-size: 14px; }
+TD {
+        FONT-FAMILY: 宋体; FONT-SIZE: 9pt
+}
+-->
+</style>
+
+<script language="JavaScript"><!--
+   //屏蔽鼠标右键、Ctrl+N、Shift+F10、F11、F5刷新、退格键
+function  document.oncontextmenu(){event.returnValue=false;}//屏蔽鼠标右键
+function  window.onhelp(){return  false}  //屏蔽F1帮助
+function  document.onkeydown()
+{
+   if  ((window.event.altKey)&&
+           ((window.event.keyCode==37)  ||      //屏蔽  Alt+  方向键  ←
+             (window.event.keyCode==39)))      //屏蔽  Alt+  方向键  →
+   {
+         alert("不准你使用ALT+方向键前进或后退网页！");
+         event.returnValue=false;
+   }
+         /*  注：这还不是真正地屏蔽  Alt+  方向键，
+         因为  Alt+  方向键弹出警告框时，按住  Alt  键不放，
+         用鼠标点掉警告框，这种屏蔽方法就失效了。以后若
+         有哪位高手有真正屏蔽  Alt  键的方法，请告知。*/
+
+   if  ((event.keyCode==8)      ||                                  //屏蔽退格删除键

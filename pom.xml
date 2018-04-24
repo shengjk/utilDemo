@@ -11,6 +11,10 @@
       <module>redisDemo</module>
     <module>hbaseDemo</module>
       <module>spark16</module>
+      <module>mavenmultimodule</module>
+      <module>hdfsDemo</module>
+    <module>xmljsonBean</module>
+      <module>excelDemo</module>
   </modules>
   <packaging>pom</packaging>
 

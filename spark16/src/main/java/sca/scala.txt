@@ -1,7 +1,0 @@
-1.关键字：
-type: http://www.codeweblog.com/scala%E7%B1%BB%E5%9E%8B-8-type-%E5%85%B3%E9%94%AE%E5%AD%97/
-
-2.语法：
-映射.get(键)返回是option对象，要么Some(对应值),要么None
-映射:->  遍历:<-
-元组不限制数据类型

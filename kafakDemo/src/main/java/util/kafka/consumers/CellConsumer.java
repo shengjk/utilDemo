@@ -55,7 +55,7 @@ public class CellConsumer extends Thread {
 	}
 	
 	public static void main(String[] args) {
-		CellConsumer consumerThread = new CellConsumer(KafkaProperties.Cell_Topic);
+		CellConsumer consumerThread = new CellConsumer(KafkaProperties.topic);
 		consumerThread.start();
 	}
 }

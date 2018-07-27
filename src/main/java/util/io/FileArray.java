@@ -9,7 +9,7 @@ import java.io.FileFilter;
 public class FileArray {
 	
 	/**
-	 *
+	 *"/Users/iss/Desktop/order_info_topic", "153"
 	 * @param pathStr
 	 * @return
 	 */

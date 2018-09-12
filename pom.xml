@@ -15,6 +15,7 @@
       <module>hdfsDemo</module>
     <module>xmljsonBean</module>
       <module>excelDemo</module>
+      <module>design</module>
   </modules>
   <packaging>pom</packaging>
 

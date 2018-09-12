@@ -21,6 +21,8 @@ public class AESCipher {
 	
 	private static final String IV_STRING = "1234567890123456";
 	private static final String charset = "UTF-8";
+	private static final String  ALGORITHM="AES";
+	private static final String  MODE= "AES/CBC/PKCS5Padding";
 	 
 	public static String aesEncryptString(String content, String key) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
 		byte[] contentBytes = content.getBytes(charset);
@@ -47,12 +49,12 @@ public class AESCipher {
 	}
 	
 	private static byte[] cipherOperation(byte[] contentBytes, byte[] keyBytes, int mode) throws UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-		SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
+		SecretKeySpec secretKey = new SecretKeySpec(keyBytes, ALGORITHM);
 		
 	    byte[] initParam = IV_STRING.getBytes(charset);
 	    IvParameterSpec ivParameterSpec = new IvParameterSpec(initParam);
 
-	    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+	    Cipher cipher = Cipher.getInstance(MODE);
 	    cipher.init(mode, secretKey, ivParameterSpec);
 
  	 	return cipher.doFinal(contentBytes);

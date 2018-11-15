@@ -4,12 +4,12 @@
         <instanceName>example,example1</instanceName>
         <name>A客户插件</name>
         <jar>/Users/iss/sourceCode/gitProject/iss/data_exchange1/dataexchangeplugin/target/dataexchangeplugin-1.0.jar</jar>
-        <className>com.ishansong.dataexchangeplugin.CanalKafkaProducer</className>
+        <className>com.xxxxxx.dataexchangeplugin.CanalKafkaProducer</className>
     </plugin>
     <plugin>
         <instanceName>ip_proxy</instanceName>
         <name>B客户插件</name>
         <jar>/Users/iss/sourceCode/gitProject/iss/data_exchange1/dataexchangeplugin/target/dataexchangeplugin-1.0.jar</jar>
-        <className>com.ishansong.dataexchangeplugin.MysqlDemo</className>
+        <className>com.xxxxxx.dataexchangeplugin.MysqlDemo</className>
     </plugin>
 </plugins>

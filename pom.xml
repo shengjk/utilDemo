@@ -399,7 +399,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>com.ishansong.data_exchange.Main</mainClass>
+              <mainClass>com.xxxxxx.data_exchange.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

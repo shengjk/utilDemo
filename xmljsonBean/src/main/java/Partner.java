@@ -1,6 +1,6 @@
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import msxf.model.Parameters;
+import xxx.model.Parameters;
 
 /**
  * Created by landscape.

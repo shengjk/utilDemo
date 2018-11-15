@@ -1,4 +1,4 @@
-//package com.ishansong.util
+//package com.xxxxxx.util
 //
 //import java.util
 //import java.util.{ TreeSet}
@@ -17,7 +17,7 @@
 //  */
 //class RedisUtils(val pattern: String, val conf: SparkConf){
 //	@transient
-//	val logger: slf4j.Logger = LoggerFactory.getLogger("com.ishansong.util.RedisUtils")
+//	val logger: slf4j.Logger = LoggerFactory.getLogger("com.xxxxxx.util.RedisUtils")
 //
 //	private val rediserrorTask = new Callable[Array[String]]() {
 //		@throws[Exception]
@@ -74,7 +74,7 @@
 //
 //object RedisUtils {
 //	@transient
-//	val logger: slf4j.Logger = LoggerFactory.getLogger("com.ishansong.util.RedisUtils")
+//	val logger: slf4j.Logger = LoggerFactory.getLogger("com.xxxxxx.util.RedisUtils")
 //
 //	def keys(pattern: String)(implicit conf: SparkConf): Array[String] = {
 //		val conn = new JedisCluster(new HostAndPort(conf.get("redis.host"), Integer.parseInt(conf.get("redis.port"))), 2000 * 10);

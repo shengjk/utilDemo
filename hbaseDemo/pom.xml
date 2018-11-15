@@ -87,7 +87,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>msxf.Main</mainClass>
+                            <mainClass>xxx.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

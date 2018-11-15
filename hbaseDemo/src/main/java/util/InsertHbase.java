@@ -28,7 +28,7 @@ public class InsertHbase {
 			
 			conn= ConnectionFactory.createConnection(config);
 			String table_name="dataresource_rawdata";
-			table=conn.getTable(TableName.valueOf("msxf_datalogic:"+table_name));
+			table=conn.getTable(TableName.valueOf("xxx_datalogic:"+table_name));
 
 			String qualifier="f";
 

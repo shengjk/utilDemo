@@ -1,4 +1,4 @@
-package msxf.model;
+package xxx.model;
 
 /**
  * Created by landscape.

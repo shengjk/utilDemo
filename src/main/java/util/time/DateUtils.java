@@ -294,7 +294,8 @@ public class DateUtils {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(millisecondsToDataStr(1517891554506L));
+		System.out.println(millisecondsToDataStr(1539587583469L));
+		System.out.println(millisecondsToDataStr(1539587597237L));
 		try {
 			System.out.println(DataStrTomilliseconds("2018-01-02 00:00:00:000"));
 			/**1509518424110  1min相差1000

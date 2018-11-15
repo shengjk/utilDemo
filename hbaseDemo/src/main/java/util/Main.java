@@ -62,7 +62,7 @@ public class Main {
 		System.out.println(a);
 		System.out.println(FileUtils.readFileToString(new File(a)));
 		System.out.println(Main.class.getClassLoader().getResource("ne12441435123"));
-		//file:/D:/gitProject/hbase/target/classes/msxf/
+		//file:/D:/gitProject/hbase/target/classes/xxx/
 		System.out.println("Main.class.getResource(\"\") "+Main.class.getResource(""));
 		//file:/D:/gitProject/hbase/target/classes/
 		System.out.println("Main.class.getResource(\"/\") "+Main.class.getResource("/"));

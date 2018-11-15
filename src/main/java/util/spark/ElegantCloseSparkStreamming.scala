@@ -17,7 +17,7 @@ import util.config.ConfigManager
   */
 class CloseStreamHandler(ssc:StreamingContext) extends AbstractHandler {
     @transient
-    private val logger: Logger = LoggerFactory.getLogger("com.ishansong.util.ElegantCloseSparkStreamming")
+    private val logger: Logger = LoggerFactory.getLogger("com.xxxxxx.util.ElegantCloseSparkStreamming")
     override def handle(s: String, baseRequest: Request, req: HttpServletRequest, response: HttpServletResponse): Unit ={
         logger.info("开始关闭......")
         ssc.stop(true,true)//优雅的关闭
@@ -31,7 +31,7 @@ class CloseStreamHandler(ssc:StreamingContext) extends AbstractHandler {
 }
 object ElegantCloseSparkStreamming {
     @transient
-    private val logger: Logger = LoggerFactory.getLogger("com.ishansong.util.ElegantCloseSparkStreamming")
+    private val logger: Logger = LoggerFactory.getLogger("com.xxxxxx.util.ElegantCloseSparkStreamming")
     /****
       * 负责启动守护的jetty服务
       * @param port 对外暴露的端口号

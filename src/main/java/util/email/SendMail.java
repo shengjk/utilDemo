@@ -35,7 +35,7 @@ public class SendMail {
 			// System.getProperties();
 			p.put("mail.smtp.auth", "true");
 			p.put("mail.transport.protocol", "smtp");
-			p.put("mail.smtp.host", "mail.msxf.com");
+			p.put("mail.smtp.host", "mail.xxx.com");
 			p.put("mail.smtp.port", "25");
 			// 建立会话
 			Session session = Session.getInstance(p);
@@ -89,8 +89,8 @@ public class SendMail {
 			msg.setContent(multipart);
 			// 邮件服务器进行验证
 			Transport tran = session.getTransport("smtp");
-			tran.connect("mail.msxf.com", "datareport@msxf.com",
-					"p@ssw0rd");
+			tran.connect("xxx", "xxx",
+					"xxx");
 			tran.sendMessage(msg, msg.getAllRecipients()); // 发送
 			System.out.println("邮件发送成功");
 
@@ -132,15 +132,14 @@ public class SendMail {
 	}
 	public static void forSend(String subject,String content){
 		SendMail send = SendMail.getInstance();
-		String to[] = { "junsheng.wu@msxf.com","donghao.liu@msxf.com","erfeng.ren@msxf.com","zheng.wei@msxf.com"};
-//		String to[] = { "junsheng.wu@msxf.com"};
+		String to[] = { "xxxxx"};
 		String cs[] = null;
 		String ms[] = null;
 
 		if(content==null||content.length()==0){
 			content = "这是邮件内容，仅仅是测试，不需要回复";
 		}
-		String fromEmail = "junsheng.wu@msxf.com";
+		String fromEmail = "xxx";
 		String[] arrArchievList = null;
 
 		// 2.保存多个附件

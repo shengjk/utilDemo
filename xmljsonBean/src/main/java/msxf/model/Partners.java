@@ -1,4 +1,4 @@
-package msxf.model;
+package xxx.model;
 
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 

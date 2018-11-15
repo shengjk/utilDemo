@@ -4,7 +4,7 @@ package callback;
  * @author shengjk1
  * @date 2018/9/12
  */
-public class KafkaClient implements CallBack {
+public class KafkaClient implements CallBack1 {
 	private KafkaServer kafkaServer;
 	
 	public KafkaClient(KafkaServer kafkaServer) {
@@ -31,9 +31,9 @@ public class KafkaClient implements CallBack {
 	@Override
 	public void solve(String result) {
 		if (result.equalsIgnoreCase("ack")){
-			System.out.println("kafka client 获取到kafkaServer处理成功的消息");
+			System.out.println("kafka client 获取到kafkaServer处理成功的消息 执行callback方法");
 		}else{
-			System.out.println("kafka client 获取到kafkaServer处理失败的消息");
+			System.out.println("kafka client 获取到kafkaServer处理失败的消息 执行callback方法");
 			System.out.println("kafka client进行失败处理");
 		}
 		

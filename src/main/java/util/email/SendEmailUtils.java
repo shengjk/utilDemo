@@ -54,12 +54,12 @@ public class SendEmailUtils {
 	   prop.put("mail.smtp.starttls.enable", "true");
 	   prop.put("mail.smtp.ssl.socketFactory", sf);
 	   //
-	   Session session = Session.getDefaultInstance(prop, new MyAuthenricator("junsheng.wu@ishansong.com", "muuLfPHjpAyaoWGs"));
+	   Session session = Session.getDefaultInstance(prop, new MyAuthenricator("发件人", "密码"));
 //        session.setDebug(true);
 	   MimeMessage mimeMessage = new MimeMessage(session);
 	   try {
-		   mimeMessage.setFrom(new InternetAddress("junsheng.wu@ishansong.com",""));
-		   Address[] addresses={new InternetAddress("junsheng.wu@ishansong.com"),new InternetAddress("haoran.wang@ishansong.com"),new InternetAddress("gang.zhang@ishansong.com")};
+		   mimeMessage.setFrom(new InternetAddress("发件人",""));
+		   Address[] addresses={new InternetAddress("xxx2收件人@xxxxxx.com"),new InternetAddress("xxx1@xxxxxx.com")};
 		   
 		   mimeMessage.addRecipients(Message.RecipientType.TO, addresses);
 		   mimeMessage.setSubject("[重要] spark程序异常-"+title);

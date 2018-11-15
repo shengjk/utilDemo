@@ -284,7 +284,7 @@ public class HbaseTest{
 		config.set("hbase.zookeeper.quorum", "192.168.2.27,192.168.2.26,192.168.2.28");
 		Connection conn=ConnectionFactory.createConnection(config);
 		String table_name="peng_yuan";
-		Table table=conn.getTable(TableName.valueOf("msxf_datalogic:"+table_name));
+		Table table=conn.getTable(TableName.valueOf("xxx_datalogic:"+table_name));
 
 		String rowkey="c4930c4d32e9499386c2ac974fc7705352d639e2b4634387a277674ac14710bf1";
 		String qualifier="peng_yuan_balck";
@@ -317,7 +317,7 @@ public class HbaseTest{
 		Configuration config = HBaseConfiguration.create();
 		config.set("hbase.zookeeper.quorum", "192.168.2.27,192.168.2.26,192.168.2.28");
 		Connection conn=ConnectionFactory.createConnection(config);
-		String table_name="msxf_blaze:pos_hard_soft_triggers";
+		String table_name="xxx_blaze:pos_hard_soft_triggers";
 		Table table=conn.getTable(TableName.valueOf(table_name));
 
 		Scan scan =new Scan();

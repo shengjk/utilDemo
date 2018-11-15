@@ -36,9 +36,9 @@ public class Consumer extends Thread {
 		Properties props = new Properties();
 		props.put("zookeeper.connect", KafkaProperties.zkConnect);
 		props.put("group.id", KafkaProperties.groupId);//消费者获取哪一个groupId，一个系统一个groupId
-		props.put("zookeeper.session.timeout.ms", "400");
-		props.put("zookeeper.sync.time.ms", "200");
-		props.put("auto.commit.interval.ms", "1000");//向zookeeper上
+//		props.put("zookeeper.session.timeout.ms", "400");
+//		props.put("zookeeper.sync.time.ms", "200");
+//		props.put("auto.commit.interval.ms", "1000");//向zookeeper上
 		props.put("bootstrap.servers", KafkaProperties.broker_list);//向zookeeper上
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
@@ -51,14 +51,16 @@ public class Consumer extends Thread {
 // push消费方式，服务端推送过来。主动方式是pull
 	public void run() {
 		
-		consumer.subscribe(Collections.singletonList("test01"));
+		consumer.subscribe(Collections.singletonList(topic));
 		while (true) {
 			ConsumerRecords<String, String> records = consumer.poll(1000);
 			for (ConsumerRecord<String, String> record : records) {
 				System.out.println("Received message: (" + record.key() + ", " + record.value() + ") at offset " + record.offset());
 				System.out.println("============ " + record.timestamp());
 			}
+			consumer.commitSync();
 		}
+		
 	}
 
 	public static void main(String[] args) {

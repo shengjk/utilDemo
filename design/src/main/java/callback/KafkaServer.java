@@ -6,7 +6,7 @@ package callback;
  */
 public class KafkaServer {
 	
-	public void saveMessage(CallBack callBack, String msg){
+	public void saveMessage(CallBack1 callBack, String msg){
 		System.out.println("kafka server access this msg");
 		for(int i=0; i<100000;i++){
 		}

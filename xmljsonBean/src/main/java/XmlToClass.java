@@ -1,8 +1,6 @@
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import xxx.model.Parameters;
-import xxx.model.Partner;
-import xxx.model.Partners;
+import msxf.model.Parameters;
 
 import java.io.File;
 import java.util.ArrayList;

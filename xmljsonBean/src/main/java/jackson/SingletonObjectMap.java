@@ -68,7 +68,7 @@ public class SingletonObjectMap {
 //如果你知道是Object，你可以直接强转成ObjectNode;如果你知道是Array，你可以直接强转成ArrayNode;
 		jsonString = "{\"@timestamp\":\"\",\"beat\":{\"hostname\":\"iss-bigdata-ali-f-dsp-002-12-101\",\"name\":\"iss-bigdata-ali-f-dsp-002-12-101\",\"version\":\"5.6.4\"},\"input_type\":\"log\",\"message\":\"{\\\"Time\\\":\\\"2019-05-01T14:04:02.918\\\",\\\"Type\\\":\\\"cnv_node_record\\\",\\\"ActivityID\\\":\\\"1001\\\",\\\"CnvNodeID\\\":\\\"1200\\\",\\\"UserID\\\":\\\"-1\\\",\\\"DeviceIDType\\\":\\\"1\\\",\\\"DeviceID\\\":\\\"55ef8057868ad2f965e8691b0f7ff821\\\",\\\"ClientIP\\\":\\\"\\\",\\\"UniqID\\\":\\\"1_55ef8057868ad2f965e8691b0f7ff821\\\",\\\"ActionTime\\\":\\\"2019-05-01T14:04:02.918\\\",\\\"ReportFrom\\\":\\\"third_dsp\\\"}\",\"offset\":1510,\"serverName\":\"iss-bigdata-ali-f-dsp-002-12-101\",\"source\":\"/mnt/iss/go/recmd-dsp-log/stats.log.2019050114\",\"type\":\"bigdata-dsp\",\n" +
 				"\"testArray\":[\"a\",\"b\",\"c\"]}";
-		
+		System.out.println(jsonString);
 		JsonNode baseRoot = mapper.readTree(jsonString);
 		//一级嵌套
 		String source = baseRoot.get("source").asText();
@@ -165,6 +165,13 @@ public class SingletonObjectMap {
 		System.out.println("person2========"+person2.getName());
 		System.out.println("getAge=========="+person2.getAge());
 		System.out.println(mapper.writeValueAsString(person2));
+		
+		//bean to jsonNode
+		JsonNode personNode = mapper.valueToTree(person2);
+		String name1 = personNode.get("age").asText();
+		System.out.println(name1);
+		System.out.println(name1);
+		
 		
 	}
 }

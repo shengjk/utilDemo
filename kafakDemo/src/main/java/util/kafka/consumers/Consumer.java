@@ -67,6 +67,7 @@ public class Consumer extends Thread {
 		ArrayList<String> strings = new ArrayList<>();
 		strings.add("recmd_dsp");
 		consumer.subscribe(strings);
+//		consumer.assign();
 		try {
 			while (true) {
 				try {

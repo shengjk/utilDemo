@@ -82,6 +82,7 @@ public class Consumer extends Thread {
 					continue;
 				}
 				consumer.wakeup();
+//				consumer.pause();
 //			consumer.commitAsync();
 				logger.info("poll");
 //			try {
